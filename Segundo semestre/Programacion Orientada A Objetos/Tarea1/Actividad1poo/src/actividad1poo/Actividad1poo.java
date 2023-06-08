@@ -1,22 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.security.SecureRandom;
+import java.util.Scanner;
 
-package actividad1poo;
+public class Main {
 
-/**
- *
- * @author PC GARCES
- */
-public class Actividad1poo {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+        Scanner scanner = new Scanner(System.in);
+        SecureRandom secureRandom = new SecureRandom();
+
+        boolean keepPlaying = true;
+
+        while (keepPlaying) {
+            int level, problemType, correctCount = 0;
+
+            do {
+                System.out.println("Por favor seleccione el nivel de dificultad (1, 2, 3 o 4):");
+                System.out.println("1. Números de un dígito.");
+                System.out.println("2. Números de dos dígitos .");
+                System.out.println("3. Números de tres dígitos .");
+                System.out.println("4. Números de cuatro dígitos .");
+                level = scanner.nextInt();
+            } while (level < 1 || level > 4);

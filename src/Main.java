@@ -54,8 +54,9 @@ public class Main {
                 num2 = secureRandom.nextInt(10000);
                 break;
             default:
-                num1 = 0;
-                num2 = 0;
+                num1 = secureRandom.nextInt(10);
+                num2 = secureRandom.nextInt(10);
+                break;
         }
 
         switch (problemType) {
@@ -71,9 +72,9 @@ public class Main {
                 message = num1 + " * " + num2 + " = ";
                 answer = num1 * num2;
                 break;
-            case 4:
-                while (num2 == 0) {     // hace que la division no sea para cero
-
+            case 4: 
+                while (num2 == 0) {    // hace que la division no sea para cero
+                    
                     num2 = secureRandom.nextInt(num1);
                 }
                   // esto ajusta num1 para uqe coincida con la division y no salga error
@@ -84,6 +85,7 @@ public class Main {
             default:
                 message = "";
                 answer = 0;
+                break;
         }
 
         System.out.println("Pregunta: " + message);
@@ -91,11 +93,13 @@ public class Main {
         isCorrect = userAnswer == answer;
 
         if (isCorrect) {
-            String[] positiveResponses = {"¡Muy bien!!", "¡Excelente!", "¡Buen trabajo!", "¡Sigue así!"};
-            int responseIndex = secureRandom.nextInt(4);
-            System.out.println(positiveResponses[responseIndex]);
+            String[] positiveResponses = {"¡Muy bien!", "¡Excelente!", "¡Buen trabajo!", "¡Sigue así!"};
+            int randomIndex = secureRandom.nextInt(positiveResponses.length);
+            System.out.println(positiveResponses[randomIndex]);
         } else {
-            System.out.println("Incorrecto. Sigue intentando.");
+            String[] negativeResponses = {"No. Por favor intenta de nuevo.", "Incorrecto.", "Intenta una vez más.", "¡No te rindas!", "No. Sigue intentando."};
+            int randomIndex = secureRandom.nextInt(negativeResponses.length);
+            System.out.println(negativeResponses[randomIndex]);
         }
     }
 }

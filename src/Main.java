@@ -91,7 +91,7 @@ public class Main {
         isCorrect = userAnswer == answer;
 
         if (isCorrect) {
-            String[] positiveResponses = {"¡Muy bien!", "¡Excelente!", "¡Buen trabajo!", "¡Sigue así!"};
+            String[] positiveResponses = {"¡Muy bien!!", "¡Excelente!", "¡Buen trabajo!", "¡Sigue así!"};
             int responseIndex = secureRandom.nextInt(4);
             System.out.println(positiveResponses[responseIndex]);
         } else {

@@ -28,7 +28,12 @@ public class Main {
             problemType = scanner.nextInt();
         } while (problemType < 1 || problemType > 5);
 
-        int num1, num2;
+        if (problemType == 5) {
+            problemType = secureRandom.nextInt(4) + 1;
+        }
+
+        int num1, num2, answer;
+        String message;
 
         switch (level) {
             case 1:
@@ -36,23 +41,60 @@ public class Main {
                 num2 = secureRandom.nextInt(10);
                 break;
             case 2:
-                num1 = secureRandom.nextInt(90) + 10;
-                num2 = secureRandom.nextInt(90) + 10;
+                num1 = secureRandom.nextInt(100);
+                num2 = secureRandom.nextInt(100);
                 break;
             case 3:
-                num1 = secureRandom.nextInt(900) + 100;
-                num2 = secureRandom.nextInt(900) + 100;
+                num1 = secureRandom.nextInt(1000);
+                num2 = secureRandom.nextInt(1000);
                 break;
             case 4:
-                num1 = secureRandom.nextInt(9000) + 1000;
-                num2 = secureRandom.nextInt(9000) + 1000;
+                num1 = secureRandom.nextInt(10000);
+                num2 = secureRandom.nextInt(10000);
                 break;
             default:
-                num1 = 0;
-                num2 = 0;
+                num1 = secureRandom.nextInt(10);
+                num2 = secureRandom.nextInt(10);
                 break;
         }
 
-        System.out.println("Programa terminado.");
+        switch (problemType) {
+            case 1:
+                message = num1 + " + " + num2 + " = ";
+                answer = num1 + num2;
+                break;
+            case 2:
+                message = num1 + " - " + num2 + " = ";
+                answer = num1 - num2;
+                break;
+            case 3:
+                message = num1 + " * " + num2 + " = ";
+                answer = num1 * num2;
+                break;
+            case 4:
+                while (num2 == 0) {     // hace que la division no sea para cero
+
+                    num2 = secureRandom.nextInt(num1);
+                }
+                  // esto ajusta num1 para uqe coincida con la division y no salga error
+
+                num1 = num1 * num2;
+                message = num1 + " / " + num2 + " = ";
+                answer = num1 / num2;
+                break;
+            default:
+                message = "";
+                answer = 0;
+                break;
+        }
+
+        System.out.println("Pregunta: " + message);
+        int userAnswer = scanner.nextInt();
+
+        if (userAnswer == answer) {
+            System.out.println("¡Respuesta correcta!");
+        } else {
+            System.out.println("¡Respuesta incorrecta!");
+        }
     }
 }

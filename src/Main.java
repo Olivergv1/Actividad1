@@ -32,8 +32,9 @@ public class Main {
             problemType = secureRandom.nextInt(4) + 1;
         }
 
-        int num1, num2, answer;
+        int num1, num2, answer, userAnswer;
         String message;
+        boolean isCorrect;
 
         switch (level) {
             case 1:
@@ -53,9 +54,8 @@ public class Main {
                 num2 = secureRandom.nextInt(10000);
                 break;
             default:
-                num1 = secureRandom.nextInt(10);
-                num2 = secureRandom.nextInt(10);
-                break;
+                num1 = 0;
+                num2 = 0;
         }
 
         switch (problemType) {
@@ -77,7 +77,6 @@ public class Main {
                     num2 = secureRandom.nextInt(num1);
                 }
                   // esto ajusta num1 para uqe coincida con la division y no salga error
-
                 num1 = num1 * num2;
                 message = num1 + " / " + num2 + " = ";
                 answer = num1 / num2;
@@ -85,16 +84,18 @@ public class Main {
             default:
                 message = "";
                 answer = 0;
-                break;
         }
 
         System.out.println("Pregunta: " + message);
-        int userAnswer = scanner.nextInt();
+        userAnswer = scanner.nextInt();
+        isCorrect = userAnswer == answer;
 
-        if (userAnswer == answer) {
-            System.out.println("¡Respuesta correcta!");
+        if (isCorrect) {
+            String[] positiveResponses = {"¡Muy bien!", "¡Excelente!", "¡Buen trabajo!", "¡Sigue así!"};
+            int responseIndex = secureRandom.nextInt(4);
+            System.out.println(positiveResponses[responseIndex]);
         } else {
-            System.out.println("¡Respuesta incorrecta!");
+            System.out.println("Incorrecto. Sigue intentando.");
         }
     }
 }
